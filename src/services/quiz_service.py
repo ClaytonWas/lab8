@@ -15,7 +15,8 @@ class QuizService:
 
     def evaluate_quiz(self, quiz_id, user_answers):
         quiz = QuizModel.get_quiz(quiz_id)
-        if (quiz is None): return quiz, "Quiz Not Found"
+        if (quiz is None): 
+            return quiz, "Quiz Not Found"
         score = 0
         for (answer, question) in zip(user_answers, quiz.questions):
             if (answer == question['answer']):

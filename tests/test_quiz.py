@@ -5,8 +5,9 @@ from src.services.quiz_service import QuizService
 
 @patch.object(QuizService, 'create_quiz')
 def test_create_quiz(mock_create_quiz, client):
-    mock_create_quiz.return_value=1
-    response = client.post('/api/quizzes', 
+    mock_create_quiz.return_value = 1
+    response = client.post(
+        '/api/quizzes',
         json={
             "title": "Scariest Monsters",
             "questions": [
@@ -21,7 +22,7 @@ def test_create_quiz(mock_create_quiz, client):
 
 @patch.object(QuizService, 'get_quiz')
 def test_get_quiz(mock_get_quiz, client):
-    mock_quiz=MagicMock(id=1, title="Swag", 
+    mock_quiz=MagicMock(id=1, title="Swag",
                           questions=[{"text": "AI WIT THE BRAIDS",
                                        "answer": "no 38!"}])
     mock_get_quiz.return_value = mock_quiz
