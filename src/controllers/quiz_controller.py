@@ -27,6 +27,6 @@ def submit_quiz(quiz_id):
     service = QuizService()
     user_answers = request.json.get('answers')
     score, message = service.evaluate_quiz(quiz_id, user_answers)
-    if(score):
+    if (score):
         return jsonify({"score": score, "message": message}), 200
     return jsonify({"error": "No Score!"}), 404

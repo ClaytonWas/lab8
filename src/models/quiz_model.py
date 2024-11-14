@@ -9,17 +9,14 @@ class QuizModel(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     title: Mapped[str] = mapped_column(String, nullable=False)
     questions: Mapped[list] = mapped_column(PickleType)
-   
 
     def __init__(self, title, questions):
         self.title = title
         self.questions = questions
 
-
     def save(self):
         db.session.add(self)
         db.session.commit()
-
 
     @classmethod
     def get_quiz(cls, quiz_id):
